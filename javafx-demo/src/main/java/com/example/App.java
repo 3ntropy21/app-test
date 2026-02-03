@@ -12,6 +12,31 @@ import javafx.scene.control.Button;
 public class App extends Application {
     int xpos = 1;
     int ypos = 1;
+    int oldx;
+    int oldy;
+    string y1 ="                                                                                                              ";
+    StringBuilder sb1 = new StringBuilder(y1);
+    string y2 ="                                                                                                              ";
+    StringBuilder sb2 = new StringBuilder(y2);
+    string y3 ="                                                                                                              ";
+    StringBuilder sb3 = new StringBuilder(y3);
+    string y4 ="                                                                                                              ";
+    StringBuilder sb4 = new StringBuilder(y4);
+    string y5 ="                                                                                                              ";
+    StringBuilder sb5 = new StringBuilder(y5);
+    string y6 ="                                                                                                              ";
+    StringBuilder sb6 = new StringBuilder(y6);
+    string y7 ="                                                                                                              ";
+    StringBuilder sb7 = new StringBuilder(y7);
+    string y8 ="                                                                                                              ";
+    StringBuilder sb8 = new StringBuilder(y8);
+    string y9 ="                                                                                                              ";
+    StringBuilder sb9 = new StringBuilder(y9);
+    string y10 ="                                                                                                              ";
+    StringBuilder sb10 = new StringBuilder(y10);
+
+
+
    @Override
    public void start(Stage stage) {
        Scene scene = new Scene(new Label("Hello, JavaFX!"), 400, 200);
@@ -44,29 +69,63 @@ public class App extends Application {
     if (xpos < 1){
         xpos = 1;
     }
-    if (xpos > 118){
-        xpos = 118;
+    if (xpos > 110){
+        xpos = 110;
     }
     if (ypos < 1){
         ypos = 1;
     }
-    if (ypos > 11){
-        ypos = 11;
+    if (ypos > 10){
+        ypos = 10;
+    }
+
+    switch (ypos) {
+        case 1:
+            sb1.setCharAt('^',xpos*11);
+            break;
+        case 2:
+            sb2.setCharAt('^',xpos*11);
+            break;
+        case 3:
+            sb3.setCharAt('^',xpos*11);
+            break;
+        case 4:
+            sb4.setCharAt('^',xpos*11);
+            break;
+        case 5:
+            sb5.setCharAt('^',xpos*11);
+            break;
+        case 6:
+            sb6.setCharAt('^',xpos*11);
+            break;
+        case 7:
+            sb7.setCharAt('^',xpos*11);
+            break;
+        case 8:
+            sb8.setCharAt('^',xpos*11);
+            break;
+        case 9:
+            sb9.setCharAt('^',xpos*11);
+            break;
+        case 10:
+            sb10.setCharAt('^',xpos*11);
+            break;
+        default:
+            break;
     }
 
        VBox root = new VBox();
-       Label row1 = new Label("^                                                                                                                     ");
-       Label row2 = new Label ("                                                                                                                      ");
-       Label row3 = new Label("                                                                                                                      ");
-       Label row4 = new Label ("                                                                                                                      ");
-       Label row5 = new Label("                                                                                                                      ");
-       Label row6 = new Label ("                                                                                                                      ");
-       Label row7 = new Label("                                                                                                                      ");
-       Label row8 = new Label ("                                                                                                                      ");
-       Label row9 = new Label("                                                                                                                      ");
-       Label row10 = new Label ("                                                                                                                      ");
-       Label row11 = new Label ("                                                                                                                      ");
-       root.getChildren().addAll(row1,row2,row3,row4,row5,row6,row7,row8,row9,row10,row11);
+       Label row1 = new Label (y1);
+       Label row2 = new Label (y2);
+       Label row3 = new Label (y3);
+       Label row4 = new Label (y4);
+       Label row5 = new Label (y5);
+       Label row6 = new Label (y6);
+       Label row7 = new Label (y7);
+       Label row8 = new Label (y8);
+       Label row9 = new Label (y9);
+       Label row10 = new Label (y10);
+       root.getChildren().addAll(row1,row2,row3,row4,row5,row6,row7,row8,row9,row10);
 
        scene.setRoot(root);
    }
