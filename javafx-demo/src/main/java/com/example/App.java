@@ -12,8 +12,6 @@ import javafx.scene.control.Button;
 public class App extends Application {
     int xpos = 1;
     int ypos = 1;
-    int oldx;
-    int oldy;
     string y1 ="                                                                                                              ";
     StringBuilder sb1 = new StringBuilder(y1);
     string y2 ="                                                                                                              ";
@@ -47,12 +45,12 @@ public class App extends Application {
 
     scene.setOnKeyPressed(event -> {
         if (event.getCode() == KeyCode.UP) {
-        ypos += 1;
+        ypos -= 1;
         }
     });
     scene.setOnKeyPressed(event -> {
         if (event.getCode() == KeyCode.DOWN) {
-        ypos -= 1;
+        ypos += 1;
         }
     });
     scene.setOnKeyPressed(event -> {
@@ -81,33 +79,43 @@ public class App extends Application {
 
     switch (ypos) {
         case 1:
+            clear();
             sb1.setCharAt('^',xpos*11);
             break;
         case 2:
+            clear();
             sb2.setCharAt('^',xpos*11);
             break;
         case 3:
+            clear();
             sb3.setCharAt('^',xpos*11);
             break;
         case 4:
+            clear();
             sb4.setCharAt('^',xpos*11);
             break;
         case 5:
+            clear();
             sb5.setCharAt('^',xpos*11);
             break;
         case 6:
+            clear();
             sb6.setCharAt('^',xpos*11);
             break;
         case 7:
+            clear();
             sb7.setCharAt('^',xpos*11);
             break;
         case 8:
+            clear();
             sb8.setCharAt('^',xpos*11);
             break;
         case 9:
+            clear();
             sb9.setCharAt('^',xpos*11);
             break;
         case 10:
+            clear();
             sb10.setCharAt('^',xpos*11);
             break;
         default:
@@ -130,6 +138,18 @@ public class App extends Application {
        scene.setRoot(root);
    }
 
+   private void clear() {
+    y1 ="                                                                                                              ";
+    y2 ="                                                                                                              ";
+    y3 ="                                                                                                              ";
+    y4 ="                                                                                                              ";
+    y5 ="                                                                                                              ";
+    y6 ="                                                                                                              ";
+    y7 ="                                                                                                              ";
+    y8 ="                                                                                                              ";
+    y9 ="                                                                                                              ";
+    y10 ="                                                                                                              ";
+   }
 
    public static void main(String[] args) {
        launch(args);
