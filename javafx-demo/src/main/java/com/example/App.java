@@ -122,22 +122,31 @@ public class App extends Application {
             break;
     }
 
+    Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), event ->
+            pick_attack()));
+            
+
+
+    timeline.setCycleCount(Animation.INDEFINITE);
+    timeline.play();
+
+
        VBox root = new VBox();
-       Label row1 = new Label (y1);
-       Label row2 = new Label (y2);
-       Label row3 = new Label (y3);
-       Label row4 = new Label (y4);
-       Label row5 = new Label (y5);
-       Label row6 = new Label (y6);
-       Label row7 = new Label (y7);
-       Label row8 = new Label (y8);
-       Label row9 = new Label (y9);
-       Label row10 = new Label (y10);
+       Label row1 = new Label (sb1);
+       Label row2 = new Label (sb2);
+       Label row3 = new Label (sb3);
+       Label row4 = new Label (sb4);
+       Label row5 = new Label (sb5);
+       Label row6 = new Label (sb6);
+       Label row7 = new Label (sb7);
+       Label row8 = new Label (sb8);
+       Label row9 = new Label (sb9);
+       Label row10 = new Label (sb10);
        root.getChildren().addAll(row1,row2,row3,row4,row5,row6,row7,row8,row9,row10);
 
        scene.setRoot(root);
    }
-
+//if this does not work use sb instead of y
    private void clear() {
     y1 ="                                                                                                              ";
     y2 ="                                                                                                              ";
@@ -149,6 +158,98 @@ public class App extends Application {
     y8 ="                                                                                                              ";
     y9 ="                                                                                                              ";
     y10 ="                                                                                                              ";
+   }
+
+   private void pick_attack(){
+    Random rand1 = new Random();
+    bool attack;
+    attack = rand1.nextBoolean();
+    if (attack) {
+        attackx();
+    }else{
+        attacky();
+    }
+   }
+
+
+   private void attackx(){
+    Random rand2 = new Random();
+    int whcich_x = rand2.nextInt(10 - 1 + 1) + min;
+    switch (which_x) {
+        case 1:
+            //for (i i<= 110, i+11) {
+                sb1.setCharAt("!", i);
+           // }
+            break;
+        case 2:
+            
+            break;
+        case 3:
+           
+            break;
+        case 4:
+            
+            break;
+        case 5:
+            
+            break;
+        case 6:
+            
+            break;
+        case 7:
+            
+            break;
+        case 8:
+            
+            break;
+        case 9:
+            
+            break;
+        case 10:
+            
+            break;
+        default:
+            break;
+    }
+   }
+
+   private void attacky() {
+    Random rand3 = new Random();
+    int whcich_y = rand3.nextInt(10 - 1 + 1) + min;
+    switch (which_y) {
+        case 1:
+            
+            break;
+        case 2:
+            
+            break;
+        case 3:
+           
+            break;
+        case 4:
+            
+            break;
+        case 5:
+            
+            break;
+        case 6:
+            
+            break;
+        case 7:
+            
+            break;
+        case 8:
+            
+            break;
+        case 9:
+            
+            break;
+        case 10:
+            
+            break;
+        default:
+            break;
+    }
    }
 
    public static void main(String[] args) {
