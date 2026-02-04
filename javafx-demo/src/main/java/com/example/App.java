@@ -177,36 +177,55 @@ public class App extends Application {
     int whcich_x = rand2.nextInt(10 - 1 + 1) + min;
     switch (which_x) {
         case 1:
-            //for (i i<= 110, i+11) {
+            for (int i = 0; i<= 110; i += 11) {
                 sb1.setCharAt("!", i);
-           // }
+            }
+            Thread.sleep(1);
             break;
         case 2:
-            
+            for (int i = 0; i<= 110; i += 11) {
+                sb2.setCharAt("!", i);
+            }
             break;
         case 3:
-           
+           for (int i = 0; i<= 110; i += 11) {
+                sb3.setCharAt("!", i);
+            }
             break;
         case 4:
-            
+            for (int i = 0; i<= 110; i += 11) {
+                sb4.setCharAt("!", i);
+            }
             break;
         case 5:
-            
+            for (int i = 0; i<= 110; i += 11) {
+                sb5.setCharAt("!", i);
+            }
             break;
         case 6:
-            
+            for (int i = 0; i<= 110; i += 11) {
+                sb6.setCharAt("!", i);
+            }
             break;
         case 7:
-            
+            for (int i = 0; i<= 110; i += 11) {
+                sb7.setCharAt("!", i);
+            }
             break;
         case 8:
-            
+            for (int i = 0; i<= 110; i += 11) {
+                sb8.setCharAt("!", i);
+            }
             break;
         case 9:
-            
+            for (int i = 0; i<= 110; i += 11) {
+                sb9.setCharAt("!", i);
+            }
             break;
         case 10:
-            
+            for (int i = 0; i<= 110; i += 11) {
+                sb10.setCharAt("!", i);
+            }
             break;
         default:
             break;
