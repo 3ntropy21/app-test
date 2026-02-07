@@ -20,6 +20,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import javafx.scene.control.Button;
 
 //mvn javafx:run
@@ -61,26 +62,34 @@ public class App extends Application {
         root.getChildren().addAll(row1, row2, row3, row4, row5, row6, row7, row8, row9, row10);
 
         scene.addEventHandler(KeyEvent.KEY_PRESSED, event -> {
-            if (event.getCode() == KeyCode.W) {
+            if (event.getCode() == KeyCode.W || event.getCode() == KeyCode.UP) {
                 ypos--;
                 update();
             }
-            if (event.getCode() == KeyCode.S) {
+            if (event.getCode() == KeyCode.S || event.getCode() == KeyCode.DOWN) {
                 ypos++;
                 update();
             }
-            if (event.getCode() == KeyCode.A) {
+            if (event.getCode() == KeyCode.A || event.getCode() == KeyCode.LEFT) {
                 xpos--;
                 update();
             }
-            if (event.getCode() == KeyCode.D) {
+            if (event.getCode() == KeyCode.D || event.getCode() == KeyCode.RIGHT) {
                 xpos++;
                 update();
             }
         });
 
         update();
+       // pick_attack();
+/* 
+       Timeline timeline = new Timeline(
+            new KeyFrame(Duration.seconds(5), e -> pick_attack())
+        );
 
+        timeline.setCycleCount(Animation.INDEFINITE);
+        timeline.play();
+        */
         scene.setRoot(root);
     }
 
@@ -202,76 +211,84 @@ public class App extends Application {
         Random rand1 = new Random();
         boolean attack;
         attack = rand1.nextBoolean();
+        Random rand2 = new Random();
+        int which_cordinate = rand2.nextInt(10) + 1;
         if (attack) {
-            attackx();
+            attackx(which_cordinate);
         } else {
-            attacky();
+            attacky(which_cordinate);
         }
     }
 
-    private void attackx() {
-        Random rand2 = new Random();
-        int which_x = rand2.nextInt(10 - 1 + 1) + 1;
-        switch (which_x) {
+    private void attackx(int cordinate) {
+        switch (cordinate) {
             case 1:
                 for (int i = 0; i <= 110; i += 11) {
                     sb1.setCharAt(i, '!');
                 }
+                row1.setText(sb1.toString());
                 break;
             case 2:
                 for (int i = 0; i <= 110; i += 11) {
                     sb2.setCharAt(i, '!');
                 }
+                row2.setText(sb2.toString());
                 break;
             case 3:
                 for (int i = 0; i <= 110; i += 11) {
                     sb3.setCharAt(i, '!');
                 }
+                row3.setText(sb3.toString());
                 break;
             case 4:
                 for (int i = 0; i <= 110; i += 11) {
                     sb4.setCharAt(i, '!');
                 }
+                row4.setText(sb4.toString());
                 break;
             case 5:
                 for (int i = 0; i <= 110; i += 11) {
                     sb5.setCharAt(i, '!');
                 }
+                row5.setText(sb5.toString());
                 break;
             case 6:
                 for (int i = 0; i <= 110; i += 11) {
                     sb6.setCharAt(i, '!');
                 }
+                row6.setText(sb6.toString());
                 break;
             case 7:
                 for (int i = 0; i <= 110; i += 11) {
                     sb7.setCharAt(i, '!');
                 }
+                row7.setText(sb7.toString());
                 break;
             case 8:
                 for (int i = 0; i <= 110; i += 11) {
                     sb8.setCharAt(i, '!');
                 }
+                row8.setText(sb8.toString());
                 break;
             case 9:
                 for (int i = 0; i <= 110; i += 11) {
                     sb9.setCharAt(i, '!');
                 }
+                row9.setText(sb9.toString());
                 break;
             case 10:
                 for (int i = 0; i <= 110; i += 11) {
                     sb10.setCharAt(i, '!');
                 }
+                row10.setText(sb10.toString());
                 break;
             default:
                 break;
         }
     }
 
-    private void attacky() {
-        Random rand3 = new Random();
-        int which_y = rand3.nextInt(10 - 1 + 1) + 1;
-        switch (which_y) {
+    private void attacky(int cordinate) {
+        switch (cordinate) {
             case 1:
 
                 break;
@@ -306,6 +323,8 @@ public class App extends Application {
                 break;
         }
     }
+
+
 
     public static void main(String[] args) {
         launch(args);
