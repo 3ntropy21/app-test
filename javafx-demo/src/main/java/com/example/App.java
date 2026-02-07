@@ -26,26 +26,17 @@ import javafx.scene.control.Button;
 public class App extends Application {
     int xpos = 1;
     int ypos = 1;
-    String y1 = "                                                                                                              ";
-    StringBuilder sb1 = new StringBuilder(y1);
-    String y2 = "                                                                                                              ";
-    StringBuilder sb2 = new StringBuilder(y2);
-    String y3 = "                                                                                                              ";
-    StringBuilder sb3 = new StringBuilder(y3);
-    String y4 = "                                                                                                              ";
-    StringBuilder sb4 = new StringBuilder(y4);
-    String y5 = "                                                                                                              ";
-    StringBuilder sb5 = new StringBuilder(y5);
-    String y6 = "                                                                                                              ";
-    StringBuilder sb6 = new StringBuilder(y6);
-    String y7 = "                                                                                                              ";
-    StringBuilder sb7 = new StringBuilder(y7);
-    String y8 = "                                                                                                              ";
-    StringBuilder sb8 = new StringBuilder(y8);
-    String y9 = "                                                                                                              ";
-    StringBuilder sb9 = new StringBuilder(y9);
-    String y10 = "                                                                                                              ";
-    StringBuilder sb10 = new StringBuilder(y10);
+    String empty = "                                                                                                              ";
+    StringBuilder sb1 = new StringBuilder(empty);
+    StringBuilder sb2 = new StringBuilder(empty);
+    StringBuilder sb3 = new StringBuilder(empty);
+    StringBuilder sb4 = new StringBuilder(empty);
+    StringBuilder sb5 = new StringBuilder(empty);
+    StringBuilder sb6 = new StringBuilder(empty);
+    StringBuilder sb7 = new StringBuilder(empty);
+    StringBuilder sb8 = new StringBuilder(empty);
+    StringBuilder sb9 = new StringBuilder(empty);
+    StringBuilder sb10 = new StringBuilder(empty);
 
     Label row1 = new Label(sb1.toString());
     Label row2 = new Label(sb2.toString());
@@ -62,7 +53,7 @@ public class App extends Application {
     public void start(Stage stage) {
         Scene scene = new Scene(new Label("Hello, JavaFX!"), 400, 200);
         stage.setScene(scene);
-        stage.setTitle("JavaFX App");
+        stage.setTitle("???");
         stage.show();
 
         VBox root = new VBox();
@@ -93,41 +84,50 @@ public class App extends Application {
         scene.setRoot(root);
     }
 
+    private void clear() {
+        empty = "                                                                                                              ";
 
-   
-    private void clear(int exclude) {
-        if (exclude != 1) {
-        sb1.replace(0, 110,
-                "                                                                                                              ");
-        } else if (exclude != 2) {
-        sb2.replace(0, 110,
-                "                                                                                                              ");
-        } else if (exclude != 3) {
-        sb3.replace(0, 110,
-                "                                                                                                              ");
-        } else if (exclude != 4) {
-        sb4.replace(0, 110,
-                "                                                                                                              ");
-        } else if (exclude != 5) {
-        sb5.replace(0, 110,
-                "                                                                                                              ");
-        } else if (exclude != 6) {
-        sb6.replace(0, 110,
-                "                                                                                                              ");
-        } else if (exclude != 7) {
-        sb7.replace(0, 110,
-                "                                                                                                              ");
-        } else if (exclude != 8) {
-        sb8.replace(0, 110,
-                "                                                                                                              ");
-        } else if (exclude != 9) {
-        sb9.replace(0, 110,
-                "                                                                                                              ");
-        } else if (exclude != 10) {
-        sb10.replace(0, 110,
-                "                                                                                                              ");
-        }
-        }
+        sb1.replace(0, sb1.length(),
+                empty);
+        row1.setText(sb1.toString());
+
+        sb2.replace(0, sb2.length(),
+                empty);
+        row2.setText(sb2.toString());
+
+        sb3.replace(0, sb3.length(),
+                empty);
+        row3.setText(sb3.toString());
+
+        sb4.replace(0, sb4.length(),
+                empty);
+        row4.setText(sb4.toString());
+
+        sb5.replace(0, sb5.length(),
+                empty);
+        row5.setText(sb5.toString());
+
+        sb6.replace(0, sb6.length(),
+                empty);
+        row6.setText(sb6.toString());
+
+        sb7.replace(0, sb7.length(),
+                empty);
+        row7.setText(sb7.toString());
+
+        sb8.replace(0, sb8.length(),
+                empty);
+        row8.setText(sb8.toString());
+
+        sb9.replace(0, sb9.length(),
+                empty);
+        row9.setText(sb9.toString());
+
+        sb10.replace(0, sb10.length(),
+                empty);
+        row10.setText(sb10.toString());
+    }
+
 
     private void update() {
         if (xpos <= 0) {
@@ -144,53 +144,52 @@ public class App extends Application {
         }
         switch (ypos) {
             case 1:
-                clear(0);
+                clear();
                 sb1.setCharAt((xpos - 1) * 11, '^');
                 row1.setText(sb1.toString());
                 break;
             case 2:
-                clear(0);
+                clear();
                 sb2.setCharAt((xpos - 1) * 11, '^');
                 row2.setText(sb2.toString());
                 break;
             case 3:
-                clear(0);
+                clear();
                 sb3.setCharAt((xpos - 1) * 11, '^');
                 row3.setText(sb3.toString());
                 break;
             case 4:
-                clear(0);
+                clear();
                 sb4.setCharAt((xpos - 1) * 11, '^');
                 row4.setText(sb4.toString());
                 break;
             case 5:
-                clear(0);
+                clear();
                 sb5.setCharAt((xpos - 1) * 11, '^');
                 row5.setText(sb5.toString());
                 break;
             case 6:
-                clear(0);
+                clear();
                 sb6.setCharAt((xpos - 1) * 11, '^');
                 row6.setText(sb6.toString());
                 break;
             case 7:
-                clear(0);
+                clear();
                 sb7.setCharAt((xpos - 1) * 11, '^');
                 row7.setText(sb7.toString());
                 break;
             case 8:
-                clear(0);
+                clear();
                 sb8.setCharAt((xpos - 1) * 11, '^');
                 row8.setText(sb8.toString());
                 break;
             case 9:
-                clear(0);
+                clear();
                 sb9.setCharAt((xpos - 1) * 11, '^');
                 row9.setText(sb9.toString());
-                clear(9);
                 break;
             case 10:
-                clear(0);
+                clear();
                 sb10.setCharAt((xpos - 1) * 11, '^');
                 row10.setText(sb10.toString());
                 break;
