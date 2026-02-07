@@ -28,6 +28,10 @@ public class App extends Application {
     int xpos = 1;
     int ypos = 1;
     String empty = "                                                                                                              ";
+    int spawn_amount = 1;
+    int fuse = 0;
+    int bombx;
+    int bomby;
     StringBuilder sb1 = new StringBuilder(empty);
     StringBuilder sb2 = new StringBuilder(empty);
     StringBuilder sb3 = new StringBuilder(empty);
@@ -64,28 +68,32 @@ public class App extends Application {
         scene.addEventHandler(KeyEvent.KEY_PRESSED, event -> {
             if (event.getCode() == KeyCode.W || event.getCode() == KeyCode.UP) {
                 ypos--;
-                update();
-                spawn(5);
+                handle_movement();
             }
             if (event.getCode() == KeyCode.S || event.getCode() == KeyCode.DOWN) {
                 ypos++;
-                update();
-                spawn(5);
+                handle_movement();
             }
             if (event.getCode() == KeyCode.A || event.getCode() == KeyCode.LEFT) {
                 xpos--;
-                update();
-                spawn(5);
+                handle_movement();
             }
             if (event.getCode() == KeyCode.D || event.getCode() == KeyCode.RIGHT) {
                 xpos++;
-                update();
-                spawn(5);
+                handle_movement();
             }
         });
 
         update();
         scene.setRoot(root);
+    }
+
+    private void handle_movement() {
+        update();
+        spawn(spawn_amount);
+        if (fuse == 1) {
+            explode(bombx, bomby);
+        }
     }
 
     private void clear() {
@@ -131,7 +139,6 @@ public class App extends Application {
                 empty);
         row10.setText(sb10.toString());
     }
-
 
     private void update() {
         if (xpos <= 0) {
@@ -202,54 +209,71 @@ public class App extends Application {
         }
     }
 
-    private void spawn(int amount){
-        for (int i=0; i<amount; i++){
+    private void spawn(int amount) {
+        for (int i = 0; i < amount; i++) {
             int x = new Random().nextInt(10) + 1;
             int y = new Random().nextInt(10) + 1;
-            switch (y) {
-                case 1:
-                    sb1.setCharAt((x - 1) * 11, 'X');
-                    row1.setText(sb1.toString());
-                    break;
-                case 2:
-                    sb2.setCharAt((x - 1) * 11, 'X');
-                    row2.setText(sb2.toString());
-                    break;
-                case 3:
-                    sb3.setCharAt((x - 1) * 11, 'X');
-                    row3.setText(sb3.toString());
-                    break;
-                case 4:
-                    sb4.setCharAt((x - 1) * 11, 'X');
-                    row4.setText(sb4.toString());
-                    break;
-                case 5:
-                    sb5.setCharAt((x - 1) * 11, 'X');
-                    row5.setText(sb5.toString());
-                    break;
-                case 6:
-                    sb6.setCharAt((x - 1) * 11, 'X');
-                    row6.setText(sb6.toString());
-                    break;
-                case 7:
-                    sb7.setCharAt((x - 1) * 11, 'X');
-                    row7.setText(sb7.toString());
-                    break;
-                case 8:
-                    sb8.setCharAt((x - 1) * 11, 'X');
-                    row8.setText(sb8.toString());
-                    break;
-                case 9:
-                    sb9.setCharAt((x - 1) * 11, 'X');
-                    row9.setText(sb9.toString());
-                    break;
-                case 10:
-                    sb10.setCharAt((x - 1) * 11, 'X');
-                    row10.setText(sb10.toString());
-                    break;
-                default:
-                    break;
+            if (x != xpos || y != ypos) {
+                switch (y) {
+                    case 1:
+                        sb1.setCharAt((x - 1) * 11, '!');
+                        row1.setText(sb1.toString());
+                        break;
+                    case 2:
+                        sb2.setCharAt((x - 1) * 11, '!');
+                        row2.setText(sb2.toString());
+                        break;
+                    case 3:
+                        sb3.setCharAt((x - 1) * 11, '!');
+                        row3.setText(sb3.toString());
+                        break;
+                    case 4:
+                        sb4.setCharAt((x - 1) * 11, '!');
+                        row4.setText(sb4.toString());
+                        break;
+                    case 5:
+                        sb5.setCharAt((x - 1) * 11, '!');
+                        row5.setText(sb5.toString());
+                        break;
+                    case 6:
+                        sb6.setCharAt((x - 1) * 11, '!');
+                        row6.setText(sb6.toString());
+                        break;
+                    case 7:
+                        sb7.setCharAt((x - 1) * 11, '!');
+                        row7.setText(sb7.toString());
+                        break;
+                    case 8:
+                        sb8.setCharAt((x - 1) * 11, '!');
+                        row8.setText(sb8.toString());
+                        break;
+                    case 9:
+                        sb9.setCharAt((x - 1) * 11, '!');
+                        row9.setText(sb9.toString());
+                        break;
+                    case 10:
+                        sb10.setCharAt((x - 1) * 11, '!');
+                        row10.setText(sb10.toString());
+                        break;
+                    default:
+                        break;
+                }
+
+                if (x - 1 == xpos || x + 1 == xpos || y - 1 == ypos || y + 1 == ypos) {
+                    fuse = 1;
+                    bombx = x;
+                    bomby = y;
+                }
             }
+        }
+    }
+
+    private void explode(int x, int y) {
+        // testing bomb explosion
+        if (xpos + 1 == x || xpos - 1 == x || ypos + 1 == y || ypos - 1 == y) {
+            Platform.exit();
+        } else {
+            fuse -= 1;
         }
     }
 
