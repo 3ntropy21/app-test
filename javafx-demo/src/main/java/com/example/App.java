@@ -65,31 +65,26 @@ public class App extends Application {
             if (event.getCode() == KeyCode.W || event.getCode() == KeyCode.UP) {
                 ypos--;
                 update();
+                spawn(5);
             }
             if (event.getCode() == KeyCode.S || event.getCode() == KeyCode.DOWN) {
                 ypos++;
                 update();
+                spawn(5);
             }
             if (event.getCode() == KeyCode.A || event.getCode() == KeyCode.LEFT) {
                 xpos--;
                 update();
+                spawn(5);
             }
             if (event.getCode() == KeyCode.D || event.getCode() == KeyCode.RIGHT) {
                 xpos++;
                 update();
+                spawn(5);
             }
         });
 
         update();
-       // pick_attack();
-/* 
-       Timeline timeline = new Timeline(
-            new KeyFrame(Duration.seconds(5), e -> pick_attack())
-        );
-
-        timeline.setCycleCount(Animation.INDEFINITE);
-        timeline.play();
-        */
         scene.setRoot(root);
     }
 
@@ -207,124 +202,56 @@ public class App extends Application {
         }
     }
 
-    private void pick_attack() {
-        Random rand1 = new Random();
-        boolean attack;
-        attack = rand1.nextBoolean();
-        Random rand2 = new Random();
-        int which_cordinate = rand2.nextInt(10) + 1;
-        if (attack) {
-            attackx(which_cordinate);
-        } else {
-            attacky(which_cordinate);
+    private void spawn(int amount){
+        for (int i=0; i<amount; i++){
+            int x = new Random().nextInt(10) + 1;
+            int y = new Random().nextInt(10) + 1;
+            switch (y) {
+                case 1:
+                    sb1.setCharAt((x - 1) * 11, 'X');
+                    row1.setText(sb1.toString());
+                    break;
+                case 2:
+                    sb2.setCharAt((x - 1) * 11, 'X');
+                    row2.setText(sb2.toString());
+                    break;
+                case 3:
+                    sb3.setCharAt((x - 1) * 11, 'X');
+                    row3.setText(sb3.toString());
+                    break;
+                case 4:
+                    sb4.setCharAt((x - 1) * 11, 'X');
+                    row4.setText(sb4.toString());
+                    break;
+                case 5:
+                    sb5.setCharAt((x - 1) * 11, 'X');
+                    row5.setText(sb5.toString());
+                    break;
+                case 6:
+                    sb6.setCharAt((x - 1) * 11, 'X');
+                    row6.setText(sb6.toString());
+                    break;
+                case 7:
+                    sb7.setCharAt((x - 1) * 11, 'X');
+                    row7.setText(sb7.toString());
+                    break;
+                case 8:
+                    sb8.setCharAt((x - 1) * 11, 'X');
+                    row8.setText(sb8.toString());
+                    break;
+                case 9:
+                    sb9.setCharAt((x - 1) * 11, 'X');
+                    row9.setText(sb9.toString());
+                    break;
+                case 10:
+                    sb10.setCharAt((x - 1) * 11, 'X');
+                    row10.setText(sb10.toString());
+                    break;
+                default:
+                    break;
+            }
         }
     }
-
-    private void attackx(int cordinate) {
-        switch (cordinate) {
-            case 1:
-                for (int i = 0; i <= 110; i += 11) {
-                    sb1.setCharAt(i, '!');
-                }
-                row1.setText(sb1.toString());
-                break;
-            case 2:
-                for (int i = 0; i <= 110; i += 11) {
-                    sb2.setCharAt(i, '!');
-                }
-                row2.setText(sb2.toString());
-                break;
-            case 3:
-                for (int i = 0; i <= 110; i += 11) {
-                    sb3.setCharAt(i, '!');
-                }
-                row3.setText(sb3.toString());
-                break;
-            case 4:
-                for (int i = 0; i <= 110; i += 11) {
-                    sb4.setCharAt(i, '!');
-                }
-                row4.setText(sb4.toString());
-                break;
-            case 5:
-                for (int i = 0; i <= 110; i += 11) {
-                    sb5.setCharAt(i, '!');
-                }
-                row5.setText(sb5.toString());
-                break;
-            case 6:
-                for (int i = 0; i <= 110; i += 11) {
-                    sb6.setCharAt(i, '!');
-                }
-                row6.setText(sb6.toString());
-                break;
-            case 7:
-                for (int i = 0; i <= 110; i += 11) {
-                    sb7.setCharAt(i, '!');
-                }
-                row7.setText(sb7.toString());
-                break;
-            case 8:
-                for (int i = 0; i <= 110; i += 11) {
-                    sb8.setCharAt(i, '!');
-                }
-                row8.setText(sb8.toString());
-                break;
-            case 9:
-                for (int i = 0; i <= 110; i += 11) {
-                    sb9.setCharAt(i, '!');
-                }
-                row9.setText(sb9.toString());
-                break;
-            case 10:
-                for (int i = 0; i <= 110; i += 11) {
-                    sb10.setCharAt(i, '!');
-                }
-                row10.setText(sb10.toString());
-                break;
-            default:
-                break;
-        }
-    }
-
-    private void attacky(int cordinate) {
-        switch (cordinate) {
-            case 1:
-
-                break;
-            case 2:
-
-                break;
-            case 3:
-
-                break;
-            case 4:
-
-                break;
-            case 5:
-
-                break;
-            case 6:
-
-                break;
-            case 7:
-
-                break;
-            case 8:
-
-                break;
-            case 9:
-
-                break;
-            case 10:
-
-                break;
-            default:
-                break;
-        }
-    }
-
-
 
     public static void main(String[] args) {
         launch(args);
