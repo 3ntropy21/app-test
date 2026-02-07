@@ -17,12 +17,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.InputEvent;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
 
 //mvn javafx:run
-public class App extends Application{
+public class App extends Application {
     int xpos = 10;
     int ypos = 10;
     String y1 = "                                                                                                              ";
@@ -46,6 +47,17 @@ public class App extends Application{
     String y10 = "                                                                                                              ";
     StringBuilder sb10 = new StringBuilder(y10);
 
+    Label row1 = new Label(sb1.toString());
+    Label row2 = new Label(sb2.toString());
+    Label row3 = new Label(sb3.toString());
+    Label row4 = new Label(sb4.toString());
+    Label row5 = new Label(sb5.toString());
+    Label row6 = new Label(sb6.toString());
+    Label row7 = new Label(sb7.toString());
+    Label row8 = new Label(sb8.toString());
+    Label row9 = new Label(sb9.toString());
+    Label row10 = new Label(sb10.toString());
+
     @Override
     public void start(Stage stage) {
         Scene scene = new Scene(new Label("Hello, JavaFX!"), 400, 200);
@@ -54,92 +66,127 @@ public class App extends Application{
         stage.show();
 
         VBox root = new VBox();
-        Label row1 = new Label(sb1.toString());
-        Label row2 = new Label(sb2.toString());
-        Label row3 = new Label(sb3.toString());
-        Label row4 = new Label(sb4.toString());
-        Label row5 = new Label(sb5.toString());
-        Label row6 = new Label(sb6.toString());
-        Label row7 = new Label(sb7.toString());
-        Label row8 = new Label(sb8.toString());
-        Label row9 = new Label(sb9.toString());
-        Label row10 = new Label(sb10.toString());
+
         root.getChildren().addAll(row1, row2, row3, row4, row5, row6, row7, row8, row9, row10);
 
-         switch (ypos) {
-                    case 1:
-                        clear();
-                        sb1.setCharAt((xpos-1) * 11, '^');
-                        row1.setText(sb1.toString());
-                        break;
-                    case 2:
-                        clear();
-                        sb2.setCharAt((xpos-1) * 11, '^');
-                        row2.setText(sb2.toString());
-                        break;
-                    case 3:
-                        clear();
-                        sb3.setCharAt((xpos-1) * 11, '^');
-                        row3.setText(sb3.toString());
-                        break;
-                    case 4:
-                        clear();
-                        sb4.setCharAt((xpos-1) * 11, '^');
-                        row4.setText(sb4.toString());
-                        break;
-                    case 5:
-                        clear();
-                        sb5.setCharAt((xpos-1) * 11, '^');
-                        row5.setText(sb5.toString());
-                        break;
-                    case 6:
-                        clear();
-                        sb6.setCharAt((xpos-1) * 11, '^');
-                        row6.setText(sb6.toString());
-                        break;
-                    case 7:
-                        clear();
-                        sb7.setCharAt((xpos-1) * 11, '^');
-                        row7.setText(sb7.toString());
-                        break;
-                    case 8:
-                        clear();
-                        sb8.setCharAt((xpos-1) * 11, '^');
-                        row8.setText(sb8.toString());
-                        break;
-                    case 9:
-                        clear();
-                        sb9.setCharAt((xpos-1) * 11, '^');
-                        row9.setText(sb9.toString());
-                        break;
-                    case 10:
-                        clear();
-                        sb10.setCharAt((xpos-1) * 11, '^');
-                        row10.setText(sb10.toString());
-                        break;
-                    default:
-                        break;
-                }
+        scene.addEventHandler(KeyEvent.KEY_PRESSED, event -> {
+            if (event.getCode() == KeyCode.W) {
+                ypos--;
+                update();
+            }
+            if (event.getCode() == KeyCode.S) {
+                ypos++;
+                update();
+            }
+            if (event.getCode() == KeyCode.A) {
+                xpos--;
+                update();
+            }
+            if (event.getCode() == KeyCode.D) {
+                xpos++;
+                update();
+            }
+        });
+
+        update();
 
         scene.setRoot(root);
     }
 
 
-
-        // if this does not work use sb instead of y
+    // if this does not work use sb instead of y
     private void clear() {
-        y1 = "                                                                                                              ";
-        y2 = "                                                                                                              ";
-        y3 = "                                                                                                              ";
-        y4 = "                                                                                                              ";
-        y5 = "                                                                                                              ";
-        y6 = "                                                                                                              ";
-        y7 = "                                                                                                              ";
-        y8 = "                                                                                                              ";
-        y9 = "                                                                                                              ";
-        y10 = "                                                                                                              ";
+        sb1.replace(0, 110,
+                "                                                                                                              ");
+        sb2.replace(0, 110,
+                "                                                                                                              ");
+        sb3.replace(0, 110,
+                "                                                                                                              ");
+        sb4.replace(0, 110,
+                "                                                                                                              ");
+        sb5.replace(0, 110,
+                "                                                                                                              ");
+        sb6.replace(0, 110,
+                "                                                                                                              ");
+        sb7.replace(0, 110,
+                "                                                                                                              ");
+        sb8.replace(0, 110,
+                "                                                                                                              ");
+        sb9.replace(0, 110,
+                "                                                                                                              ");
+        sb10.replace(0, 110,
+                "                                                                                                              ");
     }
-    
+
+    private void update() {
+        if (xpos <= 0) {
+            xpos = 1;
+        }
+        if (xpos >= 10) {
+            xpos = 10;
+        }
+        if (ypos <= 0) {
+            ypos = 1;
+        }
+        if (ypos >= 10) {
+            ypos = 10;
+        }
+        switch (ypos) {
+            case 1:
+                clear();
+                sb1.setCharAt((xpos - 1) * 11, '^');
+                row1.setText(sb1.toString());
+                break;
+            case 2:
+                clear();
+                sb2.setCharAt((xpos - 1) * 11, '^');
+                row2.setText(sb2.toString());
+                break;
+            case 3:
+                clear();
+                sb3.setCharAt((xpos - 1) * 11, '^');
+                row3.setText(sb3.toString());
+                break;
+            case 4:
+                clear();
+                sb4.setCharAt((xpos - 1) * 11, '^');
+                row4.setText(sb4.toString());
+                break;
+            case 5:
+                clear();
+                sb5.setCharAt((xpos - 1) * 11, '^');
+                row5.setText(sb5.toString());
+                break;
+            case 6:
+                clear();
+                sb6.setCharAt((xpos - 1) * 11, '^');
+                row6.setText(sb6.toString());
+                break;
+            case 7:
+                clear();
+                sb7.setCharAt((xpos - 1) * 11, '^');
+                row7.setText(sb7.toString());
+                break;
+            case 8:
+                clear();
+                sb8.setCharAt((xpos - 1) * 11, '^');
+                row8.setText(sb8.toString());
+                break;
+            case 9:
+                clear();
+                sb9.setCharAt((xpos - 1) * 11, '^');
+                row9.setText(sb9.toString());
+                break;
+            case 10:
+                clear();
+                sb10.setCharAt((xpos - 1) * 11, '^');
+                row10.setText(sb10.toString());
+                break;
+            default:
+                break;
+        }
+    }
+
     private void pick_attack() {
         Random rand1 = new Random();
         boolean attack;
