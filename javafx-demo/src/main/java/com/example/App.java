@@ -24,8 +24,8 @@ import javafx.scene.control.Button;
 
 //mvn javafx:run
 public class App extends Application {
-    int xpos = 10;
-    int ypos = 10;
+    int xpos = 1;
+    int ypos = 1;
     String y1 = "                                                                                                              ";
     StringBuilder sb1 = new StringBuilder(y1);
     String y2 = "                                                                                                              ";
@@ -94,29 +94,40 @@ public class App extends Application {
     }
 
 
-    // if this does not work use sb instead of y
-    private void clear() {
+   
+    private void clear(int exclude) {
+        if (exclude != 1) {
         sb1.replace(0, 110,
                 "                                                                                                              ");
+        } else if (exclude != 2) {
         sb2.replace(0, 110,
                 "                                                                                                              ");
+        } else if (exclude != 3) {
         sb3.replace(0, 110,
                 "                                                                                                              ");
+        } else if (exclude != 4) {
         sb4.replace(0, 110,
                 "                                                                                                              ");
+        } else if (exclude != 5) {
         sb5.replace(0, 110,
                 "                                                                                                              ");
+        } else if (exclude != 6) {
         sb6.replace(0, 110,
                 "                                                                                                              ");
+        } else if (exclude != 7) {
         sb7.replace(0, 110,
                 "                                                                                                              ");
+        } else if (exclude != 8) {
         sb8.replace(0, 110,
                 "                                                                                                              ");
+        } else if (exclude != 9) {
         sb9.replace(0, 110,
                 "                                                                                                              ");
+        } else if (exclude != 10) {
         sb10.replace(0, 110,
                 "                                                                                                              ");
-    }
+        }
+        }
 
     private void update() {
         if (xpos <= 0) {
@@ -133,52 +144,53 @@ public class App extends Application {
         }
         switch (ypos) {
             case 1:
-                clear();
+                clear(0);
                 sb1.setCharAt((xpos - 1) * 11, '^');
                 row1.setText(sb1.toString());
                 break;
             case 2:
-                clear();
+                clear(0);
                 sb2.setCharAt((xpos - 1) * 11, '^');
                 row2.setText(sb2.toString());
                 break;
             case 3:
-                clear();
+                clear(0);
                 sb3.setCharAt((xpos - 1) * 11, '^');
                 row3.setText(sb3.toString());
                 break;
             case 4:
-                clear();
+                clear(0);
                 sb4.setCharAt((xpos - 1) * 11, '^');
                 row4.setText(sb4.toString());
                 break;
             case 5:
-                clear();
+                clear(0);
                 sb5.setCharAt((xpos - 1) * 11, '^');
                 row5.setText(sb5.toString());
                 break;
             case 6:
-                clear();
+                clear(0);
                 sb6.setCharAt((xpos - 1) * 11, '^');
                 row6.setText(sb6.toString());
                 break;
             case 7:
-                clear();
+                clear(0);
                 sb7.setCharAt((xpos - 1) * 11, '^');
                 row7.setText(sb7.toString());
                 break;
             case 8:
-                clear();
+                clear(0);
                 sb8.setCharAt((xpos - 1) * 11, '^');
                 row8.setText(sb8.toString());
                 break;
             case 9:
-                clear();
+                clear(0);
                 sb9.setCharAt((xpos - 1) * 11, '^');
                 row9.setText(sb9.toString());
+                clear(9);
                 break;
             case 10:
-                clear();
+                clear(0);
                 sb10.setCharAt((xpos - 1) * 11, '^');
                 row10.setText(sb10.toString());
                 break;
@@ -206,7 +218,6 @@ public class App extends Application {
                 for (int i = 0; i <= 110; i += 11) {
                     sb1.setCharAt(i, '!');
                 }
-                // Thread.sleep(1);
                 break;
             case 2:
                 for (int i = 0; i <= 110; i += 11) {
