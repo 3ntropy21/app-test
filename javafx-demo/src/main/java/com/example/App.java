@@ -1,22 +1,30 @@
 package com.example;
 
+import javafx.event.*;
+import javafx.stage.*;
+import javafx.scene.*;
+import javafx.scene.layout.*;
+import javafx.scene.control.*;
+import javafx.application.*;
 import java.util.Random;
 import javafx.animation.Animation;
 import javafx.animation.AnimationTimer;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.input.InputEvent;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
 
 //mvn javafx:run
-public class App extends Application {
-    int xpos = 1;
-    int ypos = 1;
+public class App extends Application{
+    int xpos = 10;
+    int ypos = 10;
     String y1 = "                                                                                                              ";
     StringBuilder sb1 = new StringBuilder(y1);
     String y2 = "                                                                                                              ";
@@ -45,13 +53,6 @@ public class App extends Application {
         stage.setTitle("JavaFX App");
         stage.show();
 
-        // Timeline timeline = new Timeline(
-        // new KeyFrame(javafx.util.Duration.seconds(1), e ->
-        // pick_attack()));
-
-        // timeline.setCycleCount(Animation.INDEFINITE);
-        // timeline.play();
-
         VBox root = new VBox();
         Label row1 = new Label(sb1.toString());
         Label row2 = new Label(sb2.toString());
@@ -65,110 +66,67 @@ public class App extends Application {
         Label row10 = new Label(sb10.toString());
         root.getChildren().addAll(row1, row2, row3, row4, row5, row6, row7, row8, row9, row10);
 
-        AnimationTimer repeat_check = new AnimationTimer() {
-            public void handel(long now) {
-
-                scene.setOnKeyPressed(event -> {
-                    if (event.getCode() == KeyCode.W) {
-                        ypos -= 1;
-                    }
-                    if (ypos < 1) {
-                        ypos = 1;
-                    }
-                });
-                scene.setOnKeyPressed(event -> {
-                    if (event.getCode() == KeyCode.S) {
-                        ypos += 1;
-                    }
-                    if (ypos > 10) {
-                        ypos = 10;
-                    }
-                });
-                scene.setOnKeyPressed(event -> {
-                    if (event.getCode() == KeyCode.A) {
-                        xpos -= 1;
-                    }
-                    if (xpos < 1) {
-                        xpos = 1;
-                    }
-                });
-                scene.setOnKeyPressed(event -> {
-                    if (event.getCode() == KeyCode.D) {
-                        xpos += 1;
-                    }
-                    if (xpos > 110) {
-                        xpos = 110;
-                    }
-                });
-
-                switch (ypos) {
+         switch (ypos) {
                     case 1:
                         clear();
-                        sb1.setCharAt(xpos * 11, '^');
+                        sb1.setCharAt((xpos-1) * 11, '^');
                         row1.setText(sb1.toString());
                         break;
                     case 2:
                         clear();
-                        sb2.setCharAt(xpos * 11, '^');
+                        sb2.setCharAt((xpos-1) * 11, '^');
                         row2.setText(sb2.toString());
                         break;
                     case 3:
                         clear();
-                        sb3.setCharAt(xpos * 11, '^');
+                        sb3.setCharAt((xpos-1) * 11, '^');
                         row3.setText(sb3.toString());
                         break;
                     case 4:
                         clear();
-                        sb4.setCharAt(xpos * 11, '^');
+                        sb4.setCharAt((xpos-1) * 11, '^');
                         row4.setText(sb4.toString());
                         break;
                     case 5:
                         clear();
-                        sb5.setCharAt(xpos * 11, '^');
+                        sb5.setCharAt((xpos-1) * 11, '^');
                         row5.setText(sb5.toString());
                         break;
                     case 6:
                         clear();
-                        sb6.setCharAt(xpos * 11, '^');
+                        sb6.setCharAt((xpos-1) * 11, '^');
                         row6.setText(sb6.toString());
                         break;
                     case 7:
                         clear();
-                        sb7.setCharAt(xpos * 11, '^');
+                        sb7.setCharAt((xpos-1) * 11, '^');
                         row7.setText(sb7.toString());
                         break;
                     case 8:
                         clear();
-                        sb8.setCharAt(xpos * 11, '^');
+                        sb8.setCharAt((xpos-1) * 11, '^');
                         row8.setText(sb8.toString());
                         break;
                     case 9:
                         clear();
-                        sb9.setCharAt(xpos * 11, '^');
+                        sb9.setCharAt((xpos-1) * 11, '^');
                         row9.setText(sb9.toString());
                         break;
                     case 10:
                         clear();
-                        sb10.setCharAt(xpos * 11, '^');
+                        sb10.setCharAt((xpos-1) * 11, '^');
                         row10.setText(sb10.toString());
                         break;
                     default:
                         break;
                 }
-            }
 
-            @Override
-            public void handle(long now) {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'handle'");
-            }
-
-        };
-        repeat_check.start();
         scene.setRoot(root);
     }
 
-    // if this does not work use sb instead of y
+
+
+        // if this does not work use sb instead of y
     private void clear() {
         y1 = "                                                                                                              ";
         y2 = "                                                                                                              ";
@@ -181,7 +139,7 @@ public class App extends Application {
         y9 = "                                                                                                              ";
         y10 = "                                                                                                              ";
     }
-
+    
     private void pick_attack() {
         Random rand1 = new Random();
         boolean attack;
@@ -295,4 +253,5 @@ public class App extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+
 }
